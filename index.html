@@ -5,221 +5,244 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sumit Kumar Sharma - Resume</title>
     <style>
+        :root {
+            --primary-blue: #2c3e50;
+            --accent-blue: #34495e;
+            --text-gray: #555;
+            --line-color: #dee2e6;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f4f4f4;
             margin: 0;
             padding: 40px 0;
             color: #333;
+            line-height: 1.5;
         }
 
-        .resume-page {
-            width: 210mm; /* A4 Width */
-            min-height: 297mm; /* A4 Height */
-            padding: 20mm;
-            margin: 0 auto;
+        .resume-container {
+            width: 210mm;
+            min-height: 297mm;
             background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            padding: 40px 50px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
             box-sizing: border-box;
         }
 
+        /* Header */
         .header {
             text-align: center;
-            border-bottom: 2px solid #2c3e50;
-            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 15px;
             margin-bottom: 20px;
         }
 
         .header h1 {
             margin: 0;
-            text-transform: uppercase;
             font-size: 26px;
-            color: #2c3e50;
+            color: var(--primary-blue);
+            text-transform: uppercase;
         }
 
-        .header p {
+        .header .job-title {
+            font-weight: bold;
+            color: var(--accent-blue);
+            font-size: 16px;
             margin: 5px 0;
-            font-size: 14px;
         }
 
-        .contact-line {
+        .contact-info {
             font-size: 12px;
-            color: #555;
+            color: var(--text-gray);
+            margin-top: 8px;
         }
 
+        /* Section Styling */
         .section {
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .section-title {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
-            text-transform: uppercase;
-            color: #2c3e50;
-            background: #f4f4f4;
-            padding: 3px 10px;
-            border-left: 5px solid #2c3e50;
+            color: #fff;
+            background: var(--primary-blue);
+            padding: 4px 12px;
             margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .content {
-            padding: 0 10px;
-        }
-
-        .job-title-row {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .company-row {
-            display: flex;
-            justify-content: space-between;
-            font-style: italic;
+        /* Content Text */
+        p, li {
             font-size: 13px;
-            color: #555;
-            margin-bottom: 5px;
+            margin: 0 0 5px 0;
+            text-align: justify;
         }
 
         ul {
-            margin: 5px 0 10px 20px;
+            margin: 5px 0 10px 18px;
             padding: 0;
         }
 
         li {
-            font-size: 13px;
-            line-height: 1.5;
             margin-bottom: 4px;
         }
 
+        /* Header Rows */
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 13.5px;
+            color: #000;
+        }
+
+        .sub-header {
+            display: flex;
+            justify-content: space-between;
+            font-style: italic;
+            font-size: 12.5px;
+            color: var(--text-gray);
+            margin-bottom: 4px;
+        }
+
+        /* Skills Grid */
         .skills-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            font-size: 13px;
+            gap: 8px 20px;
+            padding: 0 5px;
         }
 
-        .project-item {
+        .skill-item {
+            font-size: 12.5px;
+        }
+
+        .project-block {
             margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eee;
         }
 
-        .project-name {
-            font-weight: bold;
-            font-size: 14px;
-        }
+        .project-block:last-child { border: none; }
 
         @media print {
-            body { background: none; padding: 0; }
-            .resume-page { box-shadow: none; margin: 0; width: 100%; }
+            body { background: white; padding: 0; }
+            .resume-container { box-shadow: none; margin: 0; width: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <div class="resume-page">
-        <div class="header">
-            <h1>Sumit Kumar Sharma [cite: 1]</h1>
-            <p><strong>Java Full Stack Developer [cite: 2, 14]</strong></p>
-            <div class="contact-line">
-                Delhi, India [cite: 6] | +91 6388956241 [cite: 4] | sumitsharma56@gmail.com [cite: 3]
-            </div>
-            <div class="contact-line">
-                LinkedIn: linkedin.com/in/sumit-sharma-28948617a [cite: 5]
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Profile Summary</div>
-            <div class="content">
-                <p style="font-size: 13px; text-align: justify; margin: 0;">
-                    Results-driven Full-Stack Software Engineer with <strong>3+ years</strong> of experience[cite: 8]. 
-                    Expertise in Java backend development using <strong>Spring Boot</strong> and <strong>Microservices</strong>, 
-                    coupled with proficiency in Angular and React.js[cite: 9]. Proven track record of optimizing performance, 
-                    implementing security measures, and delivering high-quality software in Agile environments[cite: 10].
-                </p>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Technical Skills</div>
-            <div class="content skills-grid">
-                <div><strong>Languages:</strong> Core Java, J2EE, JavaScript, C++, HTML/CSS [cite: 42]</div>
-                <div><strong>Frameworks:</strong> Spring Boot, Spring Security, Angular, React.js [cite: 44]</div>
-                <div><strong>Databases:</strong> PostgreSQL, Oracle, MySQL, NoSQL [cite: 52]</div>
-                <div><strong>Tools:</strong> Git, Docker, Jenkins, AWS, Terraform, Postman [cite: 48, 50]</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Professional Experience</div>
-            <div class="content">
-                <div class="job-title-row">
-                    <span>Java Full Stack Developer [cite: 14]</span>
-                    <span>2022 – Present [cite: 16]</span>
-                </div>
-                <div class="company-row">
-                    <span>Center for Development of Advanced Computing (C-DAC) [cite: 15]</span>
-                    <span>Delhi, India [cite: 16]</span>
-                </div>
-                <ul>
-                    <li>Architected backend solutions using Java, Spring Boot, and Spring Security with JWT[cite: 18].</li>
-                    <li>Designed multi-database architecture integrating Oracle and PostgreSQL[cite: 19].</li>
-                    <li>Implemented WebSocket functionality for real-time notifications[cite: 21].</li>
-                    <li>Optimized application performance, resulting in a 40% improvement in response times[cite: 25].</li>
-                    <li>Achieved 90% code coverage through unit testing and strict code reviews[cite: 23].</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Key Projects</div>
-            <div class="content">
-                <div class="project-item">
-                    <div class="job-title-row">
-                        <span>Digital Census (ORGI, MHA) [cite: 70, 71]</span>
-                        <span>2025 – Present [cite: 72]</span>
-                    </div>
-                    <ul>
-                        <li>Developed a centralized platform for transition to a paperless Digital Enumeration ecosystem[cite: 73, 74].</li>
-                    </ul>
-                </div>
-                <div class="project-item">
-                    <div class="job-title-row">
-                        <span>Licensing of Certifying Authorities (CCA, GoI) [cite: 56, 57]</span>
-                        <span>2024 – 2025 [cite: 58]</span>
-                    </div>
-                    <ul>
-                        <li>Automated end-to-end licensing processes, improving processing time and transparency[cite: 60, 61].</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Education</div>
-            <div class="content">
-                <div class="job-title-row">
-                    <span>PG Diploma (Advanced Computing) [cite: 35]</span>
-                    <span>CDAC [cite: 36]</span>
-                </div>
-                <div class="job-title-row" style="margin-top: 5px;">
-                    <span>B.Tech (Computer Science) [cite: 37]</span>
-                    <span>Dr. A.P.J. Abdul Kalam Technical University [cite: 38]</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">Achievements</div>
-            <div class="content">
-                <ul>
-                    <li><strong>Tech Lead:</strong> Led a team of five developers for the CCA project deployment[cite: 77, 78].</li>
-                    <li><strong>Module Lead:</strong> Demonstrated projects to officials of MeitY and ORGI[cite: 79, 80].</li>
-                </ul>
-            </div>
+<div class="resume-container">
+    <div class="header">
+        <h1>Sumit Kumar Sharma</h1>
+        <div class="job-title">Java Full Stack Developer</div>
+        <div class="contact-info">
+            Delhi, India | +91 6388956241 | sumitsharma56@gmail.com<br>
+            LinkedIn: linkedin.com/in/sumit-sharma-28948617a
         </div>
     </div>
+
+    <div class="section">
+        <div class="section-title">Profile Summary</div>
+        <p>
+            Results-driven Full-Stack Software Engineer with over <strong>3 years</strong> of experience in crafting scalable and secure applications. 
+            Expertise in <strong>Java-based backend development</strong> using Spring Boot and microservices, alongside proficiency in Angular and React.js. 
+            Proven track record of optimizing application performance and implementing robust security measures within Agile environments.
+        </p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Technical Skills</div>
+        <div class="skills-grid">
+            <div class="skill-item"><strong>Languages:</strong> Java/J2EE (Expert), JavaScript, C, C++, HTML/CSS, Shell Scripting</div>
+            <div class="skill-item"><strong>Frameworks:</strong> Spring Boot, Spring Security, Angular, React.js, Hibernate, JPA</div>
+            <div class="skill-item"><strong>DevOps & Tools:</strong> Docker, Git, CI/CD, Jenkins, AWS, Terraform, Maven, Swagger</div>
+            <div class="skill-item"><strong>Databases:</strong> PostgreSQL, Oracle, MySQL, NoSQL (HBase)</div>
+            <div class="skill-item"><strong>Core Tech:</strong> Microservices, Data Structures, Algorithms, REST APIs, Agile</div>
+            <div class="skill-item"><strong>Soft Skills:</strong> Leadership, Problem Solving, Collaboration, Communication</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Professional Experience</div>
+        <div class="item-header">
+            <span>Java Full Stack Developer</span>
+            <span>2022 – Present</span>
+        </div>
+        <div class="sub-header">
+            <span>Center for Development of Advanced Computing (C-DAC)</span>
+            <span>Delhi, India</span>
+        </div>
+        <ul>
+            <li>Architected and implemented robust backend solutions using Java/J2EE and Spring Boot with JWT authentication.</li>
+            <li>Designed and managed a multi-database architecture successfully integrating Oracle and PostgreSQL.</li>
+            <li>Engineered WebSocket functionality for real-time notifications, enhancing user engagement.</li>
+            <li>Achieved a 95% reduction in security vulnerabilities through rigorous input validation and encryption.</li>
+            <li>Optimized response times by 40% through strategic refactoring and performance tuning.</li>
+            <li>Established a culture of quality, achieving 90% unit test coverage and implementing strict code reviews.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Key Projects</div>
+        
+        <div class="project-block">
+            <div class="item-header">
+                <span>Digital Census Portal</span>
+                <span>2025 – Present</span>
+            </div>
+            <div class="sub-header">Office of the Registrar General India (ORGI), MHA</div>
+            <p>Developed a centralized platform to transition to a digital enumeration ecosystem. Implemented a secure self-enumeration module and administrative dashboard for real-time demographic data analysis.</p>
+        </div>
+
+        <div class="project-block">
+            <div class="item-header">
+                <span>Licensing & Dashboard System</span>
+                <span>2024 – 2025</span>
+            </div>
+            <div class="sub-header">Controller of Certifying Authorities (CCA), GoI</div>
+            <p>Automated the end-to-end licensing process for Certifying Authorities under the IT Act, significantly enhancing transparency and reducing manual processing time.</p>
+        </div>
+
+        <div class="project-block">
+            <div class="item-header">
+                <span>Human Resource Information System (HRIS)</span>
+                <span>2022 – 2023</span>
+            </div>
+            <div class="sub-header">National Health Mission, Jharkhand</div>
+            <p>Designed a comprehensive HRM solution to streamline employee data management, featuring employee self-service desks to improve organizational efficiency.</p>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Education</div>
+        <div class="item-header">
+            <span>PG Diploma in Advanced Computing (PG-DAC)</span>
+            <span>Delhi, India</span>
+        </div>
+        <div class="sub-header">Centre for Development of Advanced Computing (CDAC)</div>
+        <div style="margin-top: 8px;"></div>
+        <div class="item-header">
+            <span>Bachelor of Technology in Computer Science</span>
+            <span>Lucknow, India</span>
+        </div>
+        <div class="sub-header">Dr. A.P.J. Abdul Kalam Technical University</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Achievements & Languages</div>
+        <ul>
+            <li><strong>Tech Lead:</strong> Spearheaded the development and deployment of the CCA project, leading a team of five developers.</li>
+            <li><strong>Module Lead:</strong> Successfully demonstrated project milestones to senior officials at MeitY and ORGI.</li>
+            <li><strong>Languages:</strong> English, Hindi</li>
+        </ul>
+    </div>
+</div>
 
 </body>
 </html>
