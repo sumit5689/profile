@@ -1,248 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sumit Kumar Sharma - Resume</title>
-    <style>
-        :root {
-            --primary-blue: #2c3e50;
-            --accent-blue: #34495e;
-            --text-gray: #555;
-            --line-color: #dee2e6;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sumit Kumar Sharma | Java Full Stack Developer</title>
+  <meta name="description" content="Portfolio of Sumit Kumar Sharma, a Java Full Stack Developer specializing in Spring Boot, Microservices, and Angular/React.">
+  <link rel="icon" href="favicon.png">
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap">
+  <style>
+    /* Color Variables */
+    :root {
+      --bg: #0d1117;
+      --bg-lighter: #161b22;
+      --text: #c9d1d9;
+      --accent: #58a6ff;
+      --muted: #8b949e;
+      --link-color: #58a6ff;
+      --card-border: #30363d;
+      --highlight-bg: rgba(88, 166, 255, 0.4);
+    }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 40px 0;
-            color: #333;
-            line-height: 1.5;
-        }
+    body.light {
+      --bg: #ffffff;
+      --bg-lighter: #f6f8fa;
+      --text: #24292e;
+      --accent: #0366d6;
+      --muted: #586069;
+      --link-color: #0366d6;
+      --card-border: #e1e4e8;
+    }
 
-        .resume-container {
-            width: 210mm;
-            min-height: 297mm;
-            background: white;
-            margin: 0 auto;
-            padding: 40px 50px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            box-sizing: border-box;
-        }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Fira Code', monospace;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      min-height: 100vh;
+      transition: background 0.3s, color 0.3s;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    a { color: var(--link-color); text-decoration: none; }
+    a:hover { text-decoration: underline; color: var(--accent); }
 
-        /* Header */
-        .header {
-            text-align: center;
-            border-bottom: 2px solid var(--primary-blue);
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
+    /* Sidebar */
+    aside {
+      width: clamp(260px, 22vw, 300px);
+      background: var(--bg-lighter);
+      padding: 2rem 1.5rem;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      border-right: 1px solid var(--card-border);
+      overflow-y: auto;
+    }
+    .avatar { text-align: center; margin-bottom: 1rem; }
+    .avatar img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      object-fit: cover;
+    }
+    .name { font-size: 1.4em; font-weight: 600; margin: 0.5rem 0; text-align: center; color: var(--accent); }
+    .bio { font-size: 0.9em; margin: 0.2rem 0; color: var(--muted); text-align: center; }
+    .social-links { padding: 1.5rem 0; text-align: center; }
+    .social-links a { color: var(--muted); margin: 0 0.6rem; font-size: 1.2em; transition: color 0.2s; }
+    .social-links a:hover { color: var(--accent); }
 
-        .header h1 {
-            margin: 0;
-            font-size: 26px;
-            color: var(--primary-blue);
-            text-transform: uppercase;
-        }
+    nav ul { list-style: none; padding: 0; }
+    nav a {
+      color: var(--text);
+      display: block;
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      transition: 0.2s;
+    }
+    nav a:hover { background: var(--card-border); color: var(--accent); }
 
-        .header .job-title {
-            font-weight: bold;
-            color: var(--accent-blue);
-            font-size: 16px;
-            margin: 5px 0;
-        }
+    /* Main Content */
+    main { flex: 1; padding: 2rem 2.5rem; max-width: 900px; margin: 0 auto; min-width: 0; }
+    section { padding-top: 2rem; margin-top: -1rem; }
+    .card {
+      background: var(--bg-lighter);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+    }
+    h2 { font-size: 1.6em; border-bottom: 1px solid var(--card-border); padding-bottom: 0.5rem; margin-top: 2rem; }
+    h3 { color: var(--accent); margin-top: 0; }
 
-        .contact-info {
-            font-size: 12px;
-            color: var(--text-gray);
-            margin-top: 8px;
-        }
+    /* Skills Tags */
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tags span {
+      background: var(--bg-lighter);
+      border: 1px solid var(--card-border);
+      color: var(--accent);
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.85em;
+    }
 
-        /* Section Styling */
-        .section {
-            margin-bottom: 18px;
-        }
-
-        .section-title {
-            font-size: 15px;
-            font-weight: bold;
-            color: #fff;
-            background: var(--primary-blue);
-            padding: 4px 12px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* Content Text */
-        p, li {
-            font-size: 13px;
-            margin: 0 0 5px 0;
-            text-align: justify;
-        }
-
-        ul {
-            margin: 5px 0 10px 18px;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 4px;
-        }
-
-        /* Header Rows */
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            font-size: 13.5px;
-            color: #000;
-        }
-
-        .sub-header {
-            display: flex;
-            justify-content: space-between;
-            font-style: italic;
-            font-size: 12.5px;
-            color: var(--text-gray);
-            margin-bottom: 4px;
-        }
-
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px 20px;
-            padding: 0 5px;
-        }
-
-        .skill-item {
-            font-size: 12.5px;
-        }
-
-        .project-block {
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .project-block:last-child { border: none; }
-
-        @media print {
-            body { background: white; padding: 0; }
-            .resume-container { box-shadow: none; margin: 0; width: 100%; }
-        }
-    </style>
+    /* Responsive */
+    @media (max-width: 1024px) {
+      body { flex-direction: column; }
+      aside { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--card-border); }
+      main { padding: 1.5rem; }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-<div class="resume-container">
-    <div class="header">
-        <h1>Sumit Kumar Sharma</h1>
-        <div class="job-title">Java Full Stack Developer</div>
-        <div class="contact-info">
-            Delhi, India | +91 6388956241 | sumitsharma56@gmail.com<br>
-            LinkedIn: linkedin.com/in/sumit-sharma-28948617a
-        </div>
+<aside id="sidebar">
+  <div class="avatar">
+    <img src="https://ui-avatars.com/api/?name=Sumit+Sharma&background=0D8ABC&color=fff&size=128" alt="Sumit Kumar Sharma">
+  </div>
+  <h1 class="name">Sumit Kumar Sharma</h1>
+  <p class="bio">Java Full Stack Developer</p>
+  <p class="bio"><i class="fas fa-map-marker-alt"></i> Delhi, India</p>
+
+  <div class="social-links">
+    <a href="https://linkedin.com/in/sumit-sharma-28948617a" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:sumitsharma56@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a href="#"><i class="fab fa-github"></i></a>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+  </nav>
+
+  <div style="margin-top: auto; text-align: center; padding-top: 2rem;">
+    <button class="toggle" id="theme-toggle">Toggle Theme</button>
+  </div>
+</aside>
+
+<main>
+  <section id="summary">
+    <h1>👋 Hi, I'm Sumit</h1>
+    <p>
+      Results-driven <strong>Full-Stack Software Engineer</strong> with over 3 years of experience crafting scalable and secure applications. 
+      I specialize in Java-based backend development using <strong>Spring Boot</strong> and <strong>Microservices</strong>, 
+      complemented by modern frontend solutions like <strong>Angular</strong> and <strong>React.js</strong>.
+    </p>
+  </section>
+
+  <section id="experience">
+    <h2><i class="fas fa-briefcase"></i> Experience</h2>
+    <div class="card">
+      <h3>Java Full Stack Developer</h3>
+      <p><strong>C-DAC (Center for Development of Advanced Computing)</strong> | <em>2022 - Present</em></p>
+      <ul>
+        <li>Architected backend solutions using Java/J2EE and Spring Security with JWT.</li>
+        <li>Implemented multi-database architecture (Oracle & PostgreSQL) within single projects.</li>
+        <li>Developed real-time notification systems using WebSocket functionality.</li>
+        <li>Optimized response times by 40% through strategic performance tuning.</li>
+      </ul>
     </div>
+  </section>
 
-    <div class="section">
-        <div class="section-title">Profile Summary</div>
-        <p>
-            Results-driven Full-Stack Software Engineer with over <strong>3 years</strong> of experience in crafting scalable and secure applications. 
-            Expertise in <strong>Java-based backend development</strong> using Spring Boot and microservices, alongside proficiency in Angular and React.js. 
-            Proven track record of optimizing application performance and implementing robust security measures within Agile environments.
-        </p>
+  <section id="skills">
+    <h2><i class="fas fa-cogs"></i> Technical Skills</h2>
+    <div class="tags">
+      <span>Java/J2EE (Expert)</span>
+      <span>Spring Boot</span>
+      <span>Spring Security</span>
+      <span>Microservices</span>
+      <span>Angular</span>
+      <span>React.js</span>
+      <span>REST APIs</span>
+      <span>PostgreSQL</span>
+      <span>Oracle</span>
+      <span>Docker</span>
+      <span>AWS</span>
+      <span>Git</span>
+      <span>Jenkins</span>
+      <span>Data Structures</span>
     </div>
+  </section>
 
-    <div class="section">
-        <div class="section-title">Technical Skills</div>
-        <div class="skills-grid">
-            <div class="skill-item"><strong>Languages:</strong> Java/J2EE (Expert), JavaScript, C, C++, HTML/CSS, Shell Scripting</div>
-            <div class="skill-item"><strong>Frameworks:</strong> Spring Boot, Spring Security, Angular, React.js, Hibernate, JPA</div>
-            <div class="skill-item"><strong>DevOps & Tools:</strong> Docker, Git, CI/CD, Jenkins, AWS, Terraform, Maven, Swagger</div>
-            <div class="skill-item"><strong>Databases:</strong> PostgreSQL, Oracle, MySQL, NoSQL (HBase)</div>
-            <div class="skill-item"><strong>Core Tech:</strong> Microservices, Data Structures, Algorithms, REST APIs, Agile</div>
-            <div class="skill-item"><strong>Soft Skills:</strong> Leadership, Problem Solving, Collaboration, Communication</div>
-        </div>
+  <section id="projects">
+    <h2><i class="fas fa-project-diagram"></i> Key Projects</h2>
+    <div class="card">
+      <h3>Digital Census Portal (ORGI, MHA)</h3>
+      <p>Developing a centralized platform to transition India's census from paper-based to a digital enumeration ecosystem with real-time analysis.</p>
     </div>
-
-    <div class="section">
-        <div class="section-title">Professional Experience</div>
-        <div class="item-header">
-            <span>Java Full Stack Developer</span>
-            <span>2022 – Present</span>
-        </div>
-        <div class="sub-header">
-            <span>Center for Development of Advanced Computing (C-DAC)</span>
-            <span>Delhi, India</span>
-        </div>
-        <ul>
-            <li>Architected and implemented robust backend solutions using Java/J2EE and Spring Boot with JWT authentication.</li>
-            <li>Designed and managed a multi-database architecture successfully integrating Oracle and PostgreSQL.</li>
-            <li>Engineered WebSocket functionality for real-time notifications, enhancing user engagement.</li>
-            <li>Achieved a 95% reduction in security vulnerabilities through rigorous input validation and encryption.</li>
-            <li>Optimized response times by 40% through strategic refactoring and performance tuning.</li>
-            <li>Established a culture of quality, achieving 90% unit test coverage and implementing strict code reviews.</li>
-        </ul>
+    <div class="card">
+      <h3>Licensing & Dashboard (CCA, GoI)</h3>
+      <p>Automated end-to-end licensing for Certifying Authorities under the IT Act, improving processing transparency and efficiency.</p>
     </div>
-
-    <div class="section">
-        <div class="section-title">Key Projects</div>
-        
-        <div class="project-block">
-            <div class="item-header">
-                <span>Digital Census Portal</span>
-                <span>2025 – Present</span>
-            </div>
-            <div class="sub-header">Office of the Registrar General India (ORGI), MHA</div>
-            <p>Developed a centralized platform to transition to a digital enumeration ecosystem. Implemented a secure self-enumeration module and administrative dashboard for real-time demographic data analysis.</p>
-        </div>
-
-        <div class="project-block">
-            <div class="item-header">
-                <span>Licensing & Dashboard System</span>
-                <span>2024 – 2025</span>
-            </div>
-            <div class="sub-header">Controller of Certifying Authorities (CCA), GoI</div>
-            <p>Automated the end-to-end licensing process for Certifying Authorities under the IT Act, significantly enhancing transparency and reducing manual processing time.</p>
-        </div>
-
-        <div class="project-block">
-            <div class="item-header">
-                <span>Human Resource Information System (HRIS)</span>
-                <span>2022 – 2023</span>
-            </div>
-            <div class="sub-header">National Health Mission, Jharkhand</div>
-            <p>Designed a comprehensive HRM solution to streamline employee data management, featuring employee self-service desks to improve organizational efficiency.</p>
-        </div>
+    <div class="card">
+      <h3>HRIS (National Health Mission)</h3>
+      <p>Designed a comprehensive HRM solution to manage employee data and satisfaction via self-service modules.</p>
     </div>
+  </section>
 
-    <div class="section">
-        <div class="section-title">Education</div>
-        <div class="item-header">
-            <span>PG Diploma in Advanced Computing (PG-DAC)</span>
-            <span>Delhi, India</span>
-        </div>
-        <div class="sub-header">Centre for Development of Advanced Computing (CDAC)</div>
-        <div style="margin-top: 8px;"></div>
-        <div class="item-header">
-            <span>Bachelor of Technology in Computer Science</span>
-            <span>Lucknow, India</span>
-        </div>
-        <div class="sub-header">Dr. A.P.J. Abdul Kalam Technical University</div>
+  <section id="education">
+    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+    <div class="card">
+      <h3>PG Diploma (Advanced Computing)</h3>
+      <p>CDAC Delhi | <em>2022</em></p>
     </div>
+    <div class="card">
+      <h3>Bachelor of Technology (Computer Science)</h3>
+      <p>Dr. A.P.J. Abdul Kalam Technical University | <em>2017 - 2021</em></p>
+    </div>
+  </section>
 
-    <div class="section">
-        <div class="section-title">Achievements & Languages</div>
-        <ul>
-            <li><strong>Tech Lead:</strong> Spearheaded the development and deployment of the CCA project, leading a team of five developers.</li>
-            <li><strong>Module Lead:</strong> Successfully demonstrated project milestones to senior officials at MeitY and ORGI.</li>
-            <li><strong>Languages:</strong> English, Hindi</li>
-        </ul>
-    </div>
-</div>
+  <footer>
+    <p>© 2026 | Built with <i class="fas fa-heart" style="color: #e03a3a;"></i> by Sumit Kumar Sharma</p>
+  </footer>
+</main>
+
+<script>
+  // Theme Toggle Logic
+  const themeToggle = document.getElementById('theme-toggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    themeToggle.innerText = document.body.classList.contains('light') ? '🌙 Dark Mode' : '☀️ Light Mode';
+  });
+</script>
 
 </body>
 </html>
