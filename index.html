@@ -4,20 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sumit Kumar Sharma | Java Full Stack Developer</title>
-  <meta name="description" content="Portfolio of Sumit Kumar Sharma, a Java Full Stack Developer specializing in Spring Boot, Microservices, and Angular/React.">
-  <link rel="icon" href="favicon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* Color Variables - Light Mode by Default */
+    /* Default Theme: Dark Mode  */
     :root {
-      --bg: #ffffff; 
-      --bg-lighter: #f6f8fa; 
-      --text: #24292e; 
-      --accent: #0366d6; 
-      --muted: #586069; 
+      --bg: #0d1117;
+      --bg-lighter: #161b22;
+      --text: #c9d1d9;
+      --accent: #58a6ff;
+      --muted: #8b949e;
+      --link-color: #58a6ff;
+      --card-border: #30363d;
+      --highlight-bg: rgba(88, 166, 255, 0.1);
+      --hover-shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    /* Light Mode Overrides */
+    body.light {
+      --bg: #ffffff;
+      --bg-lighter: #f6f8fa;
+      --text: #24292e;
+      --accent: #0366d6;
+      --muted: #586069;
       --link-color: #0366d6;
       --card-border: #e1e4e8;
-      --highlight-bg: rgba(3, 102, 214, 0.2);
+      --highlight-bg: rgba(3, 102, 214, 0.1);
+      --hover-shadow: rgba(0, 0, 0, 0.1);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -29,13 +42,10 @@
       color: var(--text);
       display: flex;
       min-height: 100vh;
-      font-size: 14px;
-      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
     }
-    a { color: var(--link-color); text-decoration: none; }
-    a:hover { text-decoration: underline; color: var(--accent); }
 
-    /* Sidebar */
+    /* Sidebar Styles */
     aside {
       width: clamp(260px, 22vw, 300px);
       background: var(--bg-lighter);
@@ -45,195 +55,169 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
-      flex-shrink: 0;
       border-right: 1px solid var(--card-border);
       overflow-y: auto;
     }
-    .avatar { text-align: center; margin-bottom: 1rem; }
     .avatar img {
       width: 130px;
       height: 130px;
       border-radius: 50%;
       border: 3px solid var(--accent);
       object-fit: cover;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      display: block;
+      margin: 0 auto 1rem;
     }
-    .name { font-size: 1.4em; font-weight: 600; margin: 0.5rem 0; text-align: center; color: var(--accent); }
-    .bio { font-size: 0.9em; margin: 0.2rem 0; color: var(--muted); text-align: center; }
-    
-    .social-links { padding: 1.5rem 0; text-align: center; }
-    .social-links a { color: var(--muted); margin: 0 0.6rem; font-size: 1.2em; transition: color 0.2s; }
-    .social-links a:hover { color: var(--accent); }
+    .name { font-size: 1.4em; font-weight: 600; text-align: center; color: var(--accent); margin: 10px 0; }
+    .bio { font-size: 0.9em; color: var(--muted); text-align: center; margin-bottom: 5px; }
 
+    /* Navigation Hover Effects [cite: 9, 10] */
     nav ul { list-style: none; padding: 0; margin-top: 2rem; }
-    nav li { margin-bottom: 0.8rem; }
     nav a {
       color: var(--text);
       display: flex;
       align-items: center;
-      padding: 0.6rem 1rem;
-      border-radius: 6px;
-      transition: 0.2s;
-      font-weight: 500;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      margin-bottom: 5px;
     }
     nav a i { margin-right: 12px; width: 20px; text-align: center; color: var(--accent); }
-    nav a:hover { background: var(--card-border); color: var(--accent); text-decoration: none; }
+    nav a:hover {
+      background: var(--highlight-bg);
+      color: var(--accent);
+      transform: translateX(8px); /* Hover Slide Effect [cite: 9] */
+    }
 
     /* Main Content */
-    main { flex: 1; padding: 2rem 2.5rem; max-width: 900px; margin: 0 auto; min-width: 0; }
-    section { padding-top: 4rem; margin-top: -2rem; }
+    main { flex: 1; padding: 2rem 2.5rem; max-width: 900px; margin: 0 auto; }
     
+    /* Card Hover Effects [cite: 10] */
     .card {
-      background: #fff;
-      border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.25rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    h2 { 
-      font-size: 1.6em; 
-      border-bottom: 1px solid var(--card-border); 
-      padding-bottom: 0.5rem; 
-      margin-top: 2rem; 
-      display: flex;
-      align-items: center;
-    }
-    h2 i { margin-right: 15px; color: var(--accent); }
-    
-    h3 { color: var(--accent); margin-top: 0; font-size: 1.2em; }
-
-    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-    .tags span {
       background: var(--bg-lighter);
       border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-5px); /* Lift effect [cite: 10] */
+      box-shadow: 0 10px 20px var(--hover-shadow);
+    }
+
+    h2 { border-bottom: 1px solid var(--card-border); padding-bottom: 10px; display: flex; align-items: center; }
+    h2 i { margin-right: 15px; color: var(--accent); }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .tags span {
+      background: var(--bg);
+      border: 1px solid var(--card-border);
       color: var(--accent);
-      padding: 0.3rem 0.8rem;
+      padding: 0.4rem 0.9rem;
       border-radius: 20px;
       font-size: 0.85em;
+      transition: 0.2s;
     }
+    .tags span:hover { background: var(--accent); color: #fff; }
 
-    footer {
-      text-align: center;
-      font-size: 0.9em;
-      margin-top: 4rem;
-      padding: 2rem 0;
-      color: var(--muted);
-      border-top: 1px solid var(--card-border);
+    .theme-toggle {
+      background: var(--card-border);
+      color: var(--text);
+      border: 1px solid var(--muted);
+      padding: 0.6rem 1.2rem;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: auto;
+      transition: 0.3s;
     }
+    .theme-toggle:hover { background: var(--accent); color: white; }
 
-    /* Responsive */
     @media (max-width: 1024px) {
       body { flex-direction: column; }
-      aside { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--card-border); padding: 1.5rem; }
-      main { padding: 1.5rem; }
+      aside { width: 100%; height: auto; position: relative; border-right: none; }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
-<aside id="sidebar">
+<aside>
   <div class="avatar">
-    <img src="https://avatars.githubusercontent.com/u/69444634?s=400&v=4" alt="Sumit Kumar Sharma">
+    <img src="https://avatars.githubusercontent.com/u/69444634?s=400&v=4" alt="Sumit Sharma">
   </div>
-  <h1 class="name">Sumit Kumar Sharma</h1>
-  <p class="bio">Java Full Stack Developer</p>
-  <p class="bio"><i class="fas fa-map-marker-alt"></i> Delhi, India</p>
-
-  <div class="social-links">
-    <a href="https://linkedin.com/in/sumit-sharma-28948617a" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="mailto:sumitsharma56@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-    <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
-  </div>
+  <h1 class="name">Sumit Kumar Sharma [cite: 84]</h1>
+  <p class="bio">Java Full Stack Developer [cite: 85, 97]</p>
+  <p class="bio"><i class="fas fa-map-marker-alt"></i> Delhi, India [cite: 89]</p>
 
   <nav>
     <ul>
       <li><a href="#summary"><i class="fas fa-user"></i> Summary</a></li>
       <li><a href="#experience"><i class="fas fa-history"></i> Experience</a></li>
-      <li><a href="#skills"><i class="fas fa-laptop-code"></i> Skills</a></li>
-      <li><a href="#projects"><i class="fas fa-folder-open"></i> Projects</a></li>
-      <li><a href="#education"><i class="fas fa-university"></i> Education</a></li>
+      <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+      <li><a href="#projects"><i class="fas fa-tasks"></i> Projects</a></li>
     </ul>
   </nav>
+
+  <button class="theme-toggle" id="toggleBtn">☀️ Light Mode</button>
 </aside>
 
 <main>
   <section id="summary">
     <h1>👋 Hi, I'm Sumit</h1>
     <p>
-      Results-driven <strong>Full-Stack Software Engineer</strong> with over 3 years of experience crafting scalable and secure applications. 
-      I specialize in Java-based backend development using <strong>Spring Boot</strong> and <strong>Microservices</strong>, 
-      complemented by modern frontend solutions like <strong>Angular</strong> and <strong>React.js</strong>.
+      Results-driven <strong>Full-Stack Software Engineer</strong> with over 3 years of experience crafting scalable and secure applications[cite: 91]. 
+      Specializing in <strong>Java</strong>, <strong>Spring Boot</strong>, and <strong>Microservices</strong>[cite: 92, 161].
     </p>
   </section>
 
   <section id="experience">
-    <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+    <h2><i class="fas fa-briefcase"></i> Experience</h2>
     <div class="card">
-      <h3>Java Full Stack Developer</h3>
-      <p><strong>Center for Development of Advanced Computing (C-DAC)</strong> | <em>2022 - Present</em></p>
+      <h3>Java Full Stack Developer [cite: 97]</h3>
+      <p><strong>C-DAC</strong> | <em>2022 - Present [cite: 98, 99]</em></p>
       <ul>
-        <li>Architected and implemented robust backend solutions utilizing Java/J2EE, Spring Boot, and Spring Security with JWT.</li>
-        <li>Designed multi-database architecture successfully integrating Oracle and PostgreSQL within a single project.</li>
-        <li>Engineered WebSocket functionality for real-time notifications.</li>
-        <li>Optimized application performance by 40% through strategic refactoring and tuning.</li>
-        <li>Achieved 90% code coverage through unit testing and implemented strict code reviews.</li>
+        <li>Architected backend solutions using Java/J2EE and Spring Security[cite: 101].</li>
+        <li>Implemented multi-database architecture integrating Oracle and PostgreSQL[cite: 102].</li>
+        <li>Developed real-time notifications via WebSocket[cite: 104].</li>
       </ul>
     </div>
   </section>
 
   <section id="skills">
-    <h2><i class="fas fa-cogs"></i> Technical Skills</h2>
+    <h2><i class="fas fa-laptop-code"></i> Skills</h2>
     <div class="tags">
-      <span>Java/J2EE (Expert)</span>
-      <span>Spring Boot</span>
-      <span>Spring Security</span>
-      <span>Microservices</span>
-      <span>Angular</span>
-      <span>React.js</span>
-      <span>PostgreSQL</span>
-      <span>Oracle</span>
-      <span>Docker</span>
-      <span>AWS</span>
-      <span>Git</span>
-      <span>Data Structures</span>
+      <span>Java [cite: 125]</span>
+      <span>Spring Boot [cite: 127]</span>
+      <span>Angular [cite: 127]</span>
+      <span>React.js [cite: 92]</span>
+      <span>Microservices [cite: 128]</span>
+      <span>Docker [cite: 131]</span>
+      <span>PostgreSQL [cite: 135]</span>
     </div>
   </section>
 
   <section id="projects">
-    <h2><i class="fas fa-folder-open"></i> Key Projects</h2>
+    <h2><i class="fas fa-folder-open"></i> Projects</h2>
     <div class="card">
-      <h3>Digital Census (ORGI, MHA)</h3>
-      <p>Developing a centralized National Digital Census Portal to transition from paper-based methods to a complete Digital Enumeration ecosystem.</p>
+      <h3>Digital Census (MHA) [cite: 153, 154]</h3>
+      <p>Building a centralized National Digital Census Portal for paperless enumeration[cite: 156, 157].</p>
     </div>
     <div class="card">
-      <h3>Licensing & Dashboard (CCA, GoI)</h3>
-      <p>Automated end-to-end licensing processes for Certifying Authorities under the IT Act, enhancing efficiency and transparency.</p>
-    </div>
-    <div class="card">
-      <h3>HRIS (National Health Mission)</h3>
-      <p>Developed a Human Resource Information System to increase employee performance through digital accessibility and self-service modules.</p>
+      <h3>Licensing System (CCA) [cite: 139, 140]</h3>
+      <p>Automated licensing workflows for Certifying Authorities under the IT Act[cite: 142].</p>
     </div>
   </section>
-
-  <section id="education">
-    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-    <div class="card">
-      <h3>PG Diploma (Advanced Computing)</h3>
-      <p>Centre for Development of Advanced Computing (CDAC)</p>
-    </div>
-    <div class="card">
-      <h3>Bachelor of Technology (Computer Science)</h3>
-      <p>Dr. A.P.J. Abdul Kalam Technical University</p>
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2026 | Built with <i class="fas fa-heart" style="color: #e03a3a;"></i> by Sumit Kumar Sharma</p>
-  </footer>
 </main>
+
+<script>
+  const toggleBtn = document.getElementById('toggleBtn');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    const isLight = document.body.classList.contains('light');
+    toggleBtn.innerText = isLight ? '🌙 Dark Mode' : '☀️ Light Mode';
+  });
+</script>
 
 </body>
 </html>
